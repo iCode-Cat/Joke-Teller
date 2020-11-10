@@ -1,9 +1,13 @@
 const button = document.querySelector('.button');
-const audio = document.querySelector('.audio');
+
 
 
 //Call a function when click the button. 
-button.onclick = joke;
+button.onclick =  function() {
+    const callJoke = joke()
+    const audio = document.querySelector('audio')
+    audio.play();
+};
 
 //It manages all functions. and calls voice API.
 
@@ -14,27 +18,30 @@ async function joke() {
     const param = jokes.joke;
     
     //After fetch the joke call the speech function 
-    
-    
+
+
     speech(param)
-    }
+}
 
 async function speech(joke) {
     //Speech API
-    const api = `http://api.voicerss.org/?key=b2d244be347447ad84a5745a3388dbaf&hl=en-us&c=MP3&src=${joke}`
+    const api = `http://api.voicerss.org/?key=3bd7b5e8615543119f5afe1c205b6b77&hl=en-us&c=MP3&src=${joke}`
     const speech = await fetch(api)
-    const audios = document.querySelector('audio')
-    if(audios) {
-        audios.remove()
-    }
+    //Call Audio function
+    createAudio(speech.url);
+}
+    
 
-    const audioController = document.createElement('audio');
-    audioController.setAttribute('controls', '');
-    const sourceCreate = document.createElement('source');
-    sourceCreate.setAttribute('src', speech.url)
-    document.body.appendChild(audioController)
-    audioController.appendChild(sourceCreate)
+//Create audio and source
 
-}   
+function createAudio(source)  {
+
+    //If there is audio element created before, remove and create new one.
+    document.querySelector('source').src = source;
+    console.log(source);
+    
+   
+}
 
 
+    
