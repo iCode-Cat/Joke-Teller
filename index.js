@@ -5,5 +5,5 @@ button.onclick = fire;
 
 //It manages all functions.
 function fire() {
-alert('Not Hello');
+alert('Not Hello You!');
 }
