@@ -35,5 +35,7 @@ body {
   background-color: #FF4B8C;
   font-size: 1.2rem;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 /*# sourceMappingURL=style.css.map */
